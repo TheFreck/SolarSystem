@@ -7,7 +7,7 @@ export const Background = (props) => {
     receiveShadow
     position={[0,0,0]}
   >
-    {/* <ambientLight intensity={.5} /> */}
+    <ambientLight intensity={.1} />
     <boxGeometry
       args={[1000,1000,1000]}
       

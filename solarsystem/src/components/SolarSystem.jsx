@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useLoader } from "@react-three/fiber";
 import jupiterIm from "../assets/jupiter.jpg";
 import earthIm from "../assets/earth.jpg";
+import sunIm from "../assets/sun.jpg";
 
 export const SolarSystem = () => {
     const sun = [0,10];
@@ -20,6 +21,7 @@ export const SolarSystem = () => {
     const [ready, setReady] = useState(false);
     const [jupiterMap] = useLoader(THREE.TextureLoader,[jupiterIm]);
     const [earthMap] = useLoader(THREE.TextureLoader,[earthIm]);
+    const [sunMap] = useLoader(THREE.TextureLoader,[sunIm]);
 
     useEffect(() => {
         let roids = [];
@@ -38,6 +40,7 @@ export const SolarSystem = () => {
         <Sun
             name="sol"
             size={sun[1]}
+            map={sunMap}
         />
         <Planet 
             name="mercury"

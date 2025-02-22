@@ -1,13 +1,9 @@
-import * as THREE from "three";
-import { useLoader } from "@react-three/fiber";
-import transparent from "../assets/transparent.png"
 import { useRef } from "react";
 
-export const Sun = ({size}) => {
-    const [textureTrans] = useLoader(THREE.TextureLoader, [transparent]);
-    const sunRef = useRef();
+export const Sun = ({size,map}) => {
+  const sunRef = useRef();
 
-    return <mesh
+  return <mesh
     ref={sunRef}
     position={[0,0,0]}
     castShadow
@@ -18,8 +14,8 @@ export const Sun = ({size}) => {
     />
     <meshStandardMaterial
         attach="material"
-        map={textureTrans}
-        emissive="yellow"
+        emissive={"#2b2b01"}
+        emissiveIntensity={10}
     />
     <sphereGeometry
         args={[size,50,50]}
