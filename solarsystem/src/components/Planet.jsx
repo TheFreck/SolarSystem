@@ -1,6 +1,5 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
 
 export const Planet = (props) => {
     const {distance,color,size,revolutionSpeed,tilt,map} = props;

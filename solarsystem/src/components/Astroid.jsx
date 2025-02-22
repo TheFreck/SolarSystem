@@ -35,6 +35,7 @@ export const Astroid = ({group,size,distance,spin}) => {
         spokeRef.current.position.x = distance;
 
         astroidRef.current.rotation.y = Math.random()*2*Math.PI;
+        astroidRef.current.position.y = Math.random()*10;
         twinRef.current.position.x = size*2*Math.random()+1;
     },[]);
 

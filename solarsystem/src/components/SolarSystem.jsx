@@ -44,14 +44,14 @@ export const SolarSystem = () => {
             distance={mercury[1]*2}
             color={"brown"}
             size={mercury[0]}
-            revolutionSpeed={mercury[2]}
+            revolutionSpeed={mercury[2]/2}
         />
         <Planet
             name="venus"
             distance={venus[1]*2}
             color={"teal"}
             size={venus[0]}
-            revolutionSpeed={venus[2]}
+            revolutionSpeed={venus[2]/2}
         />
         <Planet
             name="earth"
@@ -59,7 +59,7 @@ export const SolarSystem = () => {
             color={"lightblue"}
             size={earth[0]}
             tilt={23}
-            revolutionSpeed={earth[2]}
+            revolutionSpeed={earth[2]/2}
             map={earthMap}
         >
             <Planet 
@@ -68,7 +68,7 @@ export const SolarSystem = () => {
                 color="gray"
                 size={earth[0]*.2}
                 tilt={0}
-                revolutionSpeed={.13}
+                revolutionSpeed={.11}
             />
         </Planet>
         <Planet
@@ -76,7 +76,7 @@ export const SolarSystem = () => {
             distance={mars[1]*2}
             color={"red"}
             size={mars[0]}
-            revolutionSpeed={mars[2]}
+            revolutionSpeed={mars[2]/2}
         />
         <Planet
             name="jupiter"
