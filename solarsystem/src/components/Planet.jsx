@@ -39,6 +39,7 @@ export const Planet = (props) => {
                     attach="material"
                     metalness={1}
                     roughness={1}
+                    color={color}
                     map={map}
                 />
                 {props.children}
