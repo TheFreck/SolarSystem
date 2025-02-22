@@ -10,7 +10,7 @@ export const Sun = ({size,map}) => {
   >
     <pointLight
         color="white"
-        intensity={100000}
+        intensity={10000}
     />
     <meshStandardMaterial
         attach="material"

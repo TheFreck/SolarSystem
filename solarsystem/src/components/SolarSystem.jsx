@@ -9,23 +9,20 @@ import { useLoader } from "@react-three/fiber";
 import jupiterIm from "../assets/jupiter.jpg";
 import earthIm from "../assets/earth.jpg";
 import sunIm from "../assets/sun.jpg";
+import planets from "../content/planetContent";
 
 export const SolarSystem = () => {
-    const sun = [0,10];
-    const mercury = [0.3504,11.58,.0298];
-    const venus = [0.8691,21.64,.0217];
-    const earth = [0.9149,29.92,.0185];
-    const mars = [.4868, 45.58,.015];
-    const jupiter = [10.0398,155.72,.0081];
     const [astroids, setAstroids] = useState([]);
     const [ready, setReady] = useState(false);
-    const [jupiterMap] = useLoader(THREE.TextureLoader,[jupiterIm]);
-    const [earthMap] = useLoader(THREE.TextureLoader,[earthIm]);
     const [sunMap] = useLoader(THREE.TextureLoader,[sunIm]);
+    const maps = {
+        earth: useLoader(THREE.TextureLoader,[earthIm]),
+        jupiter: useLoader(THREE.TextureLoader,[jupiterIm])
+    }
 
     useEffect(() => {
         let roids = [];
-        for(let i=0; i<1000; i++){
+        for(let i=0; i<5000; i++){
             roids.push({
                 size: Math.random()*.2+.2,
                 distance: ((2*Math.random()+2*Math.random())-4)*25 + 200,
@@ -39,55 +36,36 @@ export const SolarSystem = () => {
     const SolarSystemCallback = useCallback(() => <Background>
         <Sun
             name="sol"
-            size={sun[1]}
+            size={10}
             map={sunMap}
         />
-        <Planet 
-            name="mercury"
-            distance={mercury[1]*2}
-            color={"brown"}
-            size={mercury[0]}
-            revolutionSpeed={mercury[2]/2}
-        />
-        <Planet
-            name="venus"
-            distance={venus[1]*2}
-            color={"teal"}
-            size={venus[0]}
-            revolutionSpeed={venus[2]/2}
-        />
-        <Planet
-            name="earth"
-            distance={earth[1]*2}
-            color={"lightblue"}
-            size={earth[0]}
-            tilt={23}
-            revolutionSpeed={earth[2]/2}
-            map={earthMap}
-        >
-            <Planet 
-                name="luna"
-                distance={earth[1]*.1}
-                color="gray"
-                size={earth[0]*.2}
-                tilt={0}
-                revolutionSpeed={.11}
-            />
-        </Planet>
-        <Planet
-            name="mars"
-            distance={mars[1]*2}
-            color={"red"}
-            size={mars[0]}
-            revolutionSpeed={mars[2]/2}
-        />
-        <Planet
-            name="jupiter"
-            distance={jupiter[1]*2}
-            size={jupiter[0]}
-            revolutionSpeed={jupiter[2]}
-            map={jupiterMap}
-        />
+        {planets && planets.map(p => (
+            <Planet
+                key={p.name}
+                name={p.name}
+                size={p.size}
+                distance={p.distance}
+                revolutionSpeed={p.revSpeed}
+                tilt={p.tilt}
+                color={p.color}
+                map={Object.keys(maps).includes(p.name) ? maps[p.name][0] : null}
+                rotationSpeed={p.rotSpeed}
+            >
+                {p.satellites && p.satellites.map(s => (
+                    <Planet
+                        key={s.name}
+                        name={s.name}
+                        size={s.size}
+                        distance={s.distance}
+                        revolutionSpeed={s.revSpeed}
+                        tilt={s.tilt}
+                        color={s.color}
+                        map={Object.keys(maps).includes(s.name) ? maps[s.name][0] : null}
+                        rotationSpeed={s.rotSpeed}
+                    >{console.log(s.name)}</Planet>
+                ))}
+            </Planet>
+        ))}
         {astroids.map((a,i) => <Astroid key={i} group={"belt"} size={a.size} distance={a.distance} spin={a.spin} />)}
     </Background>
     ,[ready]);

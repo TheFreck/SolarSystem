@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 
 export const Planet = (props) => {
-    const {distance,color,size,revolutionSpeed,tilt,map} = props;
+    const {distance,color,size,revolutionSpeed,tilt,map,rotationSpeed} = props;
     const hubRef = useRef();
     const spokeRef = useRef();
     const planetRef = useRef();
@@ -18,6 +18,7 @@ export const Planet = (props) => {
     useFrame(() => {
         hubRef.current.rotation.y += revolutionSpeed ?? .01;
         spokeRef.current.rotation.y -= revolutionSpeed ?? .01;
+        planetRef.current.rotation.y += rotationSpeed ?? .01;
     });
 
     return <mesh

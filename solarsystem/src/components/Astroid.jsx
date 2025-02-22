@@ -59,10 +59,8 @@ export const Astroid = ({group,size,distance,spin}) => {
     
                 />
                 <meshStandardMaterial
-                    color="gray"
+                    color="white"
                     attach="material"
-                    metalness={1}
-                    roughness={1}
                 />
                 <mesh
                     ref={twinRef}
@@ -76,8 +74,6 @@ export const Astroid = ({group,size,distance,spin}) => {
                             <meshStandardMaterial
                                 color="gray"
                                 attach="material"
-                                metalness={1}
-                                roughness={1}
                             />
                         </mesh>
                     }
