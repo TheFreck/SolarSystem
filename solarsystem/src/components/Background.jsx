@@ -7,6 +7,7 @@ export const Background = (props) => {
     receiveShadow
     position={[0,0,0]}
   >
+    {/* <ambientLight intensity={.5} /> */}
     <boxGeometry
       args={[1000,1000,1000]}
       
@@ -14,7 +15,8 @@ export const Background = (props) => {
     <meshPhongMaterial
       color="darkgray"
       side={THREE.DoubleSide}
-      opacity={1}
+      opacity={0}
+      transparent
     />
     {props.children}
   </mesh>

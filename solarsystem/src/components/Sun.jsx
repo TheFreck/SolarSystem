@@ -3,7 +3,7 @@ import { useLoader } from "@react-three/fiber";
 import transparent from "../assets/transparent.png"
 import { useRef } from "react";
 
-export const Sun = () => {
+export const Sun = ({size}) => {
     const [textureTrans] = useLoader(THREE.TextureLoader, [transparent]);
     const sunRef = useRef();
 
@@ -14,7 +14,7 @@ export const Sun = () => {
   >
     <pointLight
         color="white"
-        intensity={50000}
+        intensity={100000}
     />
     <meshStandardMaterial
         attach="material"
@@ -22,7 +22,7 @@ export const Sun = () => {
         emissive="yellow"
     />
     <sphereGeometry
-        args={[10,100,100]}
+        args={[size,50,50]}
         attach="geometry"
     />
   </mesh>
