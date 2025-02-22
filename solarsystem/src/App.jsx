@@ -29,7 +29,7 @@ function App() {
         onClick={() => setControls(!controls)}
       >{controls === controlsEnum.orbit ? "Orbit" : "Fly"}</Button>
       <Canvas
-        camera={{position:[0,50,0], aspect: aspectWidth/aspectHeight, cameraNear, cameraFar}}
+        camera={{position:[0,15,200], aspect: aspectWidth/aspectHeight, cameraNear, cameraFar}}
         style={{height: "100vh", width: "100vw", margin: 0, padding: 0, background: "black"}}
         shadows
       >
