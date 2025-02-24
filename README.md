@@ -1,4 +1,4 @@
-# [Solar System]("https://thefreck.github.io/SolarSystem/")
+# [Solar System](https://thefreck.github.io/SolarSystem/)
 
 This is a really fun curiosity project. It started by learning that our humble Earth is the only place in the solar system that experiences eclipses. Why would this be? The relative sizes of the Sun, Moon and Earth are so magically aligned with the the distances of the Earth and the Moon from the Sun and each other that when they are aligned the Moon and Sun appear the same size from Earth. Mars has two moons but they are too small to cover the sun, even though the sun appears smaller on Mars. All the other more distant planetary neighbors with moons are too distant for the same effect.
 
