@@ -62,7 +62,7 @@ export const SolarSystem = () => {
                         color={s.color}
                         map={Object.keys(maps).includes(s.name) ? maps[s.name][0] : null}
                         rotationSpeed={s.rotSpeed}
-                    >{console.log(s.name)}</Planet>
+                    />
                 ))}
             </Planet>
         ))}
