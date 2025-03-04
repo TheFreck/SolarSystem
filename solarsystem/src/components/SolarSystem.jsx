@@ -28,7 +28,7 @@ export const SolarSystem = ({baseRef}) => {
         for(let i=0; i<5000; i++){
             roids.push({
                 size: Math.random()*.2+.2,
-                distance: ((2*Math.random()+2*Math.random())-4)*10 + 100,
+                distance: ((2*Math.random()+2*Math.random())-4)*10 + 220,
                 spin: Math.random()/50
             });
         }
