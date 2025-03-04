@@ -24,6 +24,7 @@ export const SolarSystem = ({baseRef}) => {
     }
 
     useEffect(() => {
+        console.log("inside solarsystem");
         let roids = [];
         for(let i=0; i<5000; i++){
             roids.push({
@@ -35,10 +36,11 @@ export const SolarSystem = ({baseRef}) => {
         setAstroids(roids);
     },[]);
 
-    return <Background>
+    return (
+    <Background>
         <Sun
             name="sol"
-            size={1}
+            size={10}
         />
         {planets && planets.map(p => (
             <Planet
@@ -80,6 +82,7 @@ export const SolarSystem = ({baseRef}) => {
         />
     ))}
     </Background>
+    );
 }
 
 export default SolarSystem;

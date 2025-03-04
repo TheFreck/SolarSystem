@@ -3,10 +3,6 @@ import { useEffect, useRef } from "react";
 export const Sun = ({size, intensity}) => {
   const sunRef = useRef();
 
-  useEffect(() => {
-    // console.log("sun");
-  },[]);
-
   return <mesh
     ref={sunRef}
     position={[0,0,0]}

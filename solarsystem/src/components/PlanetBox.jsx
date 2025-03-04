@@ -11,6 +11,7 @@ import jupiterIm from "../assets/jupiter.jpg";
 import lunaIm from "../assets/luna.jpg";
 import Planet from "./Planet";
 import Sun from "./Sun";
+import { OrbitControls } from "@react-three/drei";
 
 export const PlanetBox = (props) => {
     const {
@@ -36,13 +37,11 @@ export const PlanetBox = (props) => {
     }
 
     useEffect(() => {
-        console.log("planet: ", planet);
-        console.log("enum: ", viewEnum);
         if(!planet || !viewEnum.mercury) return;
-        console.log("view: ", viewEnum);
-        console.log(planet);
-        console.log(Object.keys(viewEnum)[planet]);
         let target = planetContent.find(p => p.name === Object.keys(viewEnum)[planet]);
+        if(target.name === "luna") {
+            target.distance = 93
+        }
         sunHubRef.current.position.x = 0
         boxRef.current.rotation.z = -.4;
         setTargetBody(target);
@@ -65,7 +64,7 @@ export const PlanetBox = (props) => {
         position={[0, 0, 0]}
         rotation={[0,0,((90-targetBody.tilt)/360)*2*Math.PI]}
     >
-        <ambientLight intensity={.1} />
+        <ambientLight intensity={.51} />
         <boxGeometry
             args={[1000, 1000, 1000]}
 

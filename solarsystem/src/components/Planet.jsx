@@ -12,12 +12,17 @@ export const Planet = (props) => {
 
     useEffect(() => {
         if(!planetName || !size || !baseRef.movement || !baseRef.distance || !baseRef.size) return;
+        console.log("base movement: ", baseRef.movement);
         hubRef.current.position.x = 0;
         hubRef.current.position.y = 0;
         hubRef.current.position.z = 0;
         spokeRef.current.position.x = distance;
         spokeRef.current.rotation.z = tilt ? (tilt/360)*2*Math.PI : 0;
         satelliteRef.current.position.x = distance * baseRef.distance;
+        if(planetName === "luna") spokeRef.current.rotation.x = .7*Math.PI;
+        if(planetName === "luna") spokeRef.current.rotation.y = .1*Math.PI;
+        if(planetName === "luna") spokeRef.current.rotation.z = 1*Math.PI;
+        if(planetName === "luna") hubRef.current.rotation.y = 3*Math.PI/2;
         setReady(true);
     },[]);
 
@@ -43,8 +48,8 @@ export const Planet = (props) => {
                 ref={planetRef}
                 name={planetName}
             >
-                {/* <axesHelper scale={size*2} />
-                <gridHelper scale={size} /> */}
+                {/* <axesHelper scale={size*2} /> */}
+                {/* <gridHelper scale={size} /> */}
                 <sphereGeometry 
                     args={[size,50,50]}
                     attach="geometry"

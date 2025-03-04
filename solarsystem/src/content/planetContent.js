@@ -8,7 +8,7 @@ const mercury = {
     name: "mercury",
     size: .3504*baseSize,
     distance: 33*baseDistance,
-    revSpeed: .00298*baseMovement,
+    revSpeed: .005*baseMovement,
     tilt: 0,
     rotSpeed: 0.167,
     color: "lightgray",
@@ -18,7 +18,7 @@ const venus = {
     name: "venus",
     size: .9*baseSize,
     distance: 67*baseDistance,
-    revSpeed: .00217*baseMovement,
+    revSpeed: .0035*baseMovement,
     tilt: 3,
     rotSpeed: 0.0041,
     color: "teal",
@@ -36,7 +36,7 @@ const earth = {
 };
 const luna = {
     name: "luna",
-    size: earth.size*.25*baseSize,
+    size: earth.size*.25*baseSize*3,
     distance: earth.size*4*baseSize,
     revSpeed: 0.0333*baseMovement,
     tilt: 5,
@@ -80,9 +80,9 @@ const jupiter = {
     name: "jupiter",
     size: 11*baseSize,
     distance: 484*baseDistance,
-    revSpeed: .0081*baseMovement,
+    revSpeed: .0005*baseMovement,
     tilt: 0,
-    rotSpeed: .1,
+    rotSpeed: .0001,
     color: "white",
     satellites: []
 };
@@ -91,6 +91,8 @@ export default [
     venus,
     earth,
     mars,
-    jupiter
-
+    jupiter,
+    luna,
+    phobos,
+    deimos
 ]
