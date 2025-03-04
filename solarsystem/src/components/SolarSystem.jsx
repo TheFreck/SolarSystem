@@ -53,7 +53,6 @@ export const SolarSystem = ({baseRef}) => {
                 map={Object.keys(maps).includes(p.name) ? maps[p.name][0] : null}
                 rotationSpeed={p.rotSpeed}
             >
-                {/* {console.log("planet: ", p.name)} */}
                 {p.satellites && p.satellites.map(s => (
                     <Planet
                         key={s.name}
@@ -70,7 +69,7 @@ export const SolarSystem = ({baseRef}) => {
                 ))}
             </Planet>
         ))}
-        {/* {
+        {
         astroids.map((a,i) => (
         <Astroid 
             key={i} 
@@ -79,7 +78,7 @@ export const SolarSystem = ({baseRef}) => {
             distance={a.distance*baseRef.distance} 
             spin={a.spin*baseRef.movement} 
         />
-    ))} */}
+    ))}
     </Background>
 }
 
