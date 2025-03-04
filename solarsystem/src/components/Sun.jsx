@@ -1,7 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-export const Sun = ({size,map}) => {
+export const Sun = ({size, intensity}) => {
   const sunRef = useRef();
+
+  useEffect(() => {
+    // console.log("sun");
+  },[]);
 
   return <mesh
     ref={sunRef}
@@ -10,7 +14,7 @@ export const Sun = ({size,map}) => {
   >
     <pointLight
         color="white"
-        intensity={10000}
+        intensity={intensity ? intensity : 10000}
     />
     <meshStandardMaterial
         attach="material"

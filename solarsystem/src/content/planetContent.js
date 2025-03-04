@@ -1,63 +1,65 @@
 import jupiterIm from "../assets/jupiter.jpg";
 import earthIm from "../assets/earth.jpg";
-import { distance } from "three/tsl";
+const baseMovement = 1;
+const baseDistance = 1;
+const baseSize = 1;
 
 const mercury = {
     name: "mercury",
-    size: .3504,
-    distance: 11.58,
-    revSpeed: .00298,
+    size: .3504*baseSize,
+    distance: 33*baseDistance,
+    revSpeed: .00298*baseMovement,
     tilt: 0,
-    rotSpeed: 0,
-    color: "brown",
+    rotSpeed: 0.167,
+    color: "lightgray",
     satellites: []
 };
 const venus = {
     name: "venus",
-    size: .8691,
-    distance: 21.64,
-    revSpeed: .00217,
-    tilt: 0,
-    rotSpeed: 0,
+    size: .9*baseSize,
+    distance: 67*baseDistance,
+    revSpeed: .00217*baseMovement,
+    tilt: 3,
+    rotSpeed: 0.0041,
     color: "teal",
     satellites: []
 };
 const earth = {
     name: "earth",
-    size: .9149,
-    distance: 29.92,
-    revSpeed: .0015,
+    size: baseSize,
+    distance: 93*baseDistance,
+    revSpeed: 0.0027395*baseMovement,
     tilt: 23,
-    rotSpeed: .1,
+    rotSpeed: 1*baseMovement,
     color: "",
     satellites: []
 };
 const luna = {
     name: "luna",
-    size: earth.size*.27,
-    distance: earth.distance*.1,
-    revSpeed: -.095,
-    tilt: 0,
-    color: "gray",
+    size: earth.size*.25*baseSize,
+    distance: earth.size*4*baseSize,
+    revSpeed: 0.0333*baseMovement,
+    tilt: 5,
     rotSpeed: 0,
+    color: "gray",
     satellites: []
 };
 earth.satellites.push(luna);
 const mars = {
     name: "mars",
-    size: .4868,
-    distance: 45.58,
-    revSpeed: .00075,
+    size: .5*baseSize,
+    distance: 142*baseSize,
+    revSpeed: .0014*baseMovement,
     tilt: 25,
-    rotSpeed: .1,
+    rotSpeed: .5*baseMovement,
     color: "red",
     satellites: []
 };
 const phobos = {
     name: "phobos",
-    size: .1,
-    distance: mars.distance*.0225,
-    revSpeed: -mars.rotSpeed*.9,
+    size: mars.size*.0033*baseSize,
+    distance: mars.size*4*baseSize,
+    revSpeed: mars.revSpeed*3,
     tilt: 0,
     rotSpeed: 0,
     color: "white",
@@ -65,9 +67,9 @@ const phobos = {
 };
 const deimos = {
     name: "deimos",
-    size: .175,
-    distance: mars.distance*.075,
-    revSpeed: -mars.rotSpeed*.95,
+    size: mars.size*.0019*baseSize,
+    distance: mars.size*7*baseDistance,
+    revSpeed: mars.revSpeed*1.26,
     rotSpeed: 0,
     color: "white",
     satellites: []
@@ -76,9 +78,9 @@ mars.satellites.push(phobos);
 mars.satellites.push(deimos);
 const jupiter = {
     name: "jupiter",
-    size: 10.0398,
-    distance: 155.72,
-    revSpeed: .0081,
+    size: 11*baseSize,
+    distance: 484*baseDistance,
+    revSpeed: .0081*baseMovement,
     tilt: 0,
     rotSpeed: .1,
     color: "white",

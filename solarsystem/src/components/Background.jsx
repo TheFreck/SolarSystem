@@ -1,8 +1,16 @@
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
 import * as THREE from "three";
 
 export const Background = (props) => {
+  const backRef = useRef();
+
+  useFrame(() => {
+    // backRef.current.rotation.y -= .0042;
+  })
 
     return <mesh
+    ref={backRef}
     name="box"
     receiveShadow
     position={[0,0,0]}

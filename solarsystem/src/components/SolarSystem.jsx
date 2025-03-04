@@ -6,17 +6,20 @@ import Planet from "./Planet";
 import Astroid from "./Astroid";
 import { useCallback, useEffect, useState } from "react";
 import { useLoader } from "@react-three/fiber";
+import mercuryIm from "../assets/mercury.png";
 import jupiterIm from "../assets/jupiter.jpg";
 import earthIm from "../assets/earth.jpg";
+import lunaIm from "../assets/luna.jpg";
 import sunIm from "../assets/sun.jpg";
 import planets from "../content/planetContent";
 
-export const SolarSystem = () => {
+export const SolarSystem = ({baseRef}) => {
     const [astroids, setAstroids] = useState([]);
     const [ready, setReady] = useState(false);
-    const [sunMap] = useLoader(THREE.TextureLoader,[sunIm]);
     const maps = {
+        mercury: useLoader(THREE.TextureLoader,[mercuryIm]),
         earth: useLoader(THREE.TextureLoader,[earthIm]),
+        luna: useLoader(THREE.TextureLoader,[lunaIm]),
         jupiter: useLoader(THREE.TextureLoader,[jupiterIm])
     }
 
@@ -30,19 +33,18 @@ export const SolarSystem = () => {
             });
         }
         setAstroids(roids);
-        setReady(true);
     },[]);
 
-    const SolarSystemCallback = useCallback(() => <Background>
+    return <Background>
         <Sun
             name="sol"
-            size={10}
-            map={sunMap}
+            size={1}
         />
         {planets && planets.map(p => (
             <Planet
                 key={p.name}
-                name={p.name}
+                planetName={p.name}
+                baseRef={baseRef}
                 size={p.size}
                 distance={p.distance}
                 revolutionSpeed={p.revSpeed}
@@ -51,10 +53,12 @@ export const SolarSystem = () => {
                 map={Object.keys(maps).includes(p.name) ? maps[p.name][0] : null}
                 rotationSpeed={p.rotSpeed}
             >
+                {/* {console.log("planet: ", p.name)} */}
                 {p.satellites && p.satellites.map(s => (
                     <Planet
                         key={s.name}
-                        name={s.name}
+                        planetName={s.name}
+                        baseRef={baseRef}
                         size={s.size}
                         distance={s.distance}
                         revolutionSpeed={s.revSpeed}
@@ -66,11 +70,17 @@ export const SolarSystem = () => {
                 ))}
             </Planet>
         ))}
-        {astroids.map((a,i) => <Astroid key={i} group={"belt"} size={a.size} distance={a.distance} spin={a.spin} />)}
+        {/* {
+        astroids.map((a,i) => (
+        <Astroid 
+            key={i} 
+            group={"belt"} 
+            size={a.size*baseRef.size} 
+            distance={a.distance*baseRef.distance} 
+            spin={a.spin*baseRef.movement} 
+        />
+    ))} */}
     </Background>
-    ,[ready]);
-
-    return <SolarSystemCallback />
 }
 
 export default SolarSystem;
