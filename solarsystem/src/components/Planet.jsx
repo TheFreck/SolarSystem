@@ -27,10 +27,12 @@ export const Planet = (props) => {
     },[]);
 
     useFrame(() => {
-        hubRef.current.rotation.y += revolutionSpeed * baseRef.movement ?? 0;
-        spokeRef.current.rotation.y -= revolutionSpeed * baseRef.movement ?? 0;
-        satelliteRef.current.rotation.y -= revolutionSpeed * baseRef.movement ?? 0;
-        planetRef.current.rotation.y += rotationSpeed * baseRef.movement ?? 0;
+        let revAdjustment = revolutionSpeed ? revolutionSpeed * baseRef.movement : 0;
+        let rotAdjustment = rotationSpeed ? revolutionSpeed * baseRef.movement : 0;
+        hubRef.current.rotation.y += revAdjustment;
+        spokeRef.current.rotation.y -= revAdjustment;
+        satelliteRef.current.rotation.y -= revAdjustment;
+        planetRef.current.rotation.y += rotAdjustment;
     });
 
     return <mesh
